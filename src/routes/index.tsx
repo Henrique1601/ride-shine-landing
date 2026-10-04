@@ -19,6 +19,7 @@ import {
   ChevronDown,
   CheckCircle2,
 } from "lucide-react";
+import { ReviewsCarousel } from "../components/ReviewsCarousel";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -100,27 +101,6 @@ const faqs = [
   {
     q: "Onde a loja fica localizada e como agendar uma visita?",
     a: "Estamos situados na Av. Senador Feijó, 455, no bairro Vila Mathias em Santos - SP (CEP 11015-505). Não é necessário agendamento prévio, mas caso prefira, pode nos chamar no WhatsApp para já deixar a moto do seu interesse separada para você conferir.",
-  },
-];
-
-const testimonials = [
-  {
-    name: "Lucas Moreira",
-    city: "Santos - SP",
-    bike: "Honda PCX 160",
-    text: "Atendimento impecável na Vila Mathias. Comprei minha PCX e o financiamento foi aprovado super rápido. Equipe transparente e moto entregue perfeitamente revisada.",
-  },
-  {
-    name: "Rodrigo Silveira",
-    city: "São Vicente - SP",
-    bike: "Kawasaki Z400",
-    text: "Dei minha 250cc na troca e peguei a Z400. Fizeram uma avaliação justa da minha moto usada, sem enrolação. Recomendo demais na Baixada Santista.",
-  },
-  {
-    name: "Camila Fernandes",
-    city: "Praia Grande - SP",
-    bike: "Honda ADV 160",
-    text: "Fiz questão da procedência e do laudo cautelar. A JM Motors passou total segurança desde o primeiro contato no WhatsApp até a retirada da chave.",
   },
 ];
 
@@ -740,49 +720,19 @@ function Index() {
       {/* Depoimentos & Avaliações */}
       <section id="depoimentos" className="border-t border-border px-6 py-28 bg-card/30">
         <div className="mx-auto max-w-7xl">
-          <Reveal className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <div>
-              <p className="mb-3 text-sm uppercase tracking-[0.3em] text-primary">05 — Confiança</p>
-              <h2 className="font-display text-6xl font-black uppercase md:text-8xl">
-                Quem compra, recomenda
-              </h2>
-            </div>
-            <div className="inline-flex items-center gap-3 rounded-full border border-border bg-card px-5 py-3">
-              <div className="flex text-amber-400">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-amber-400" />
-                ))}
-              </div>
-              <span className="text-sm font-semibold">4.9 / 5.0 no Google</span>
-            </div>
+          <Reveal className="mb-14">
+            <p className="mb-3 text-sm uppercase tracking-[0.3em] text-primary">05 — Confiança</p>
+            <h2 className="font-display text-6xl font-black uppercase md:text-8xl">
+              Quem compra, recomenda
+            </h2>
+            <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
+              Confira os relatos de clientes de Santos e região que conquistaram sua moto na JM Motors.
+            </p>
           </Reveal>
 
-          <div className="grid gap-6 md:grid-cols-3">
-            {testimonials.map((t, idx) => (
-              <Reveal
-                key={t.name}
-                delay={idx * 0.1}
-                className="rounded-lg border border-border bg-card p-8 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex text-amber-400 mb-4">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-amber-400" />
-                    ))}
-                  </div>
-                  <p className="text-muted-foreground text-sm leading-relaxed italic">
-                    "{t.text}"
-                  </p>
-                </div>
-                <div className="mt-6 pt-4 border-t border-border/60">
-                  <p className="font-display text-lg font-bold uppercase">{t.name}</p>
-                  <p className="text-xs text-muted-foreground">
-                    {t.city} · Adquiriu {t.bike}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal delay={0.1}>
+            <ReviewsCarousel />
+          </Reveal>
         </div>
       </section>
 
